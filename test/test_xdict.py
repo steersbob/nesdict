@@ -33,3 +33,43 @@ def test_get(xdata, data):
 
     with pytest.raises(TypeError):
         data.get()
+
+
+def test_search(xdata, data):
+    assert xdata.search('*') == data
+
+    assert xdata.search('*id') == {
+        '_id': data['_id'],
+        'guid': data['guid']
+    }
+
+    assert xdata.search('**/id') == {
+        'friends': [
+            {'id': 0},
+            {'id': 1},
+            {'id': 2}
+        ]
+    }
+
+    assert xdata.search('*/*/id') == {
+        'friends': [
+            {'id': 0},
+            {'id': 1},
+            {'id': 2}
+        ]
+    }
+
+    assert xdata.search('**/*id') == {
+        '_id': data['_id'],
+        'guid': data['guid'],
+        'friends': [
+            {'id': 0},
+            {'id': 1},
+            {'id': 2}
+        ]
+    }
+
+    # '.' for wildcard single is not supported
+    assert xdata.search('.id') == {}
+    # but '?' is
+    assert xdata.search('?id') == {'_id': data['_id']}

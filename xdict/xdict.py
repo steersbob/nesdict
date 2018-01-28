@@ -21,3 +21,6 @@ class XDict(dict):
                 return default
             else:
                 raise KeyError('Key not found: [{}]'.format(path))
+
+    def search(self, path, yielded=False):
+        return dpath.util.search(self.copy(), path, yielded=yielded)
