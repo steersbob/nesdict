@@ -60,4 +60,4 @@ def data():
 
 @pytest.fixture
 def xdata(data):
-    return XDict(**data)
+    return XDict(data)
