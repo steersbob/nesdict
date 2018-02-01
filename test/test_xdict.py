@@ -198,3 +198,10 @@ def test_del(xdata):
 
 def test_copy(xdata, data):
     assert xdata.copy().__class__ == xdata.__class__
+
+
+def test_nested(xdata):
+    xxdata = XDict(xdata)
+
+    assert xxdata['friends/0/name'] == xdata['friends/0/name']
+    assert xxdata.search('*') == xdata.search('*')
