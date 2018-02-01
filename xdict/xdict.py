@@ -16,7 +16,13 @@ class XDict(UserDict):
 
     def __init__(self, *args, **kwargs):
         super().__init__()
-        self.data = dict(*args, **kwargs)
+        if not kwargs \
+                and len(args) == 1 \
+                and type(args[0]) == type(self):
+            # special exception for using XDict(XDict()) without any other arguments
+            self.data = args[0].data.copy()
+        else:
+            self.data = dict(*args, **kwargs)
 
     def copy(self):
         return XDict(self.data)
