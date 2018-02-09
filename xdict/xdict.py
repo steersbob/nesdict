@@ -2,10 +2,9 @@
 Basic XDict
 """
 
-import dpath
-import copy
 from collections import UserDict
 
+import dpath
 
 # should match behavior of builtin dict()
 dpath.options.ALLOW_EMPTY_STRING_KEYS = True
