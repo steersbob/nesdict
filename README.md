@@ -1,5 +1,7 @@
 # NesDict
 
+[![Build Status](https://travis-ci.org/Kargathia/nesdict.svg?branch=master)](https://travis-ci.org/Kargathia/nesdict)
+
 Intended to add easy-to-use lookup syntax to Python's builtin `dict()`, removing the need to chain `[]` operators or `.get()` calls.
 
 Example:
