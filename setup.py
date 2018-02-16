@@ -2,12 +2,12 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name='xdict',
+    name='nesdict',
     version='0.1',
     description='Support for xpath-like lookups in nested Python dicts.',
     long_description=open('README.md').read(),
-    url='https://github.com/Kargathia/xdict',
-    download_url='https://github.com/Kargathia/xdict/archive/0.1.tar.gz',
+    url='https://github.com/Kargathia/nesdict',
+    download_url='https://github.com/Kargathia/nesdict/archive/0.1.tar.gz',
     author='Bob Steers',
     author_email='kargathia@hotmail.com',
     classifiers=[

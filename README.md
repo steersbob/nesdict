@@ -1,13 +1,13 @@
-# XDict
+# NesDict
 
 Intended to add easy-to-use lookup syntax to Python's builtin `dict()`, removing the need to chain `[]` operators or `.get()` calls.
 
 Example:
 
 ```python
-from xdict import XDict
+from nesdict import NesDict
 
-xdata = XDict({
+xdata = NesDict({
     'path': {
         'to': {
             'nested': {
