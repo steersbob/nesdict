@@ -3,7 +3,7 @@ conftest.py: default file for pytest fixtures
 """
 
 import pytest
-from xdict import XDict
+from nesdict import NesDict
 
 
 @pytest.fixture
@@ -60,4 +60,4 @@ def data():
 
 @pytest.fixture
 def xdata(data):
-    return XDict(data)
+    return NesDict(data)

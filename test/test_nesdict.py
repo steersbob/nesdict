@@ -1,10 +1,10 @@
 """
-Tests xdict.xdict.XDict
+Tests nesdict.nesdict.NesDict
 """
 
 import pytest
 import json
-from xdict import XDict
+from nesdict import NesDict
 
 
 def test_magic(xdata, data):
@@ -201,7 +201,7 @@ def test_copy(xdata, data):
 
 
 def test_nested(xdata):
-    xxdata = XDict(xdata)
+    xxdata = NesDict(xdata)
 
     assert xxdata['friends/0/name'] == xdata['friends/0/name']
     assert xxdata.search('*') == xdata.search('*')
