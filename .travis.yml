@@ -11,7 +11,7 @@ jobs:
   include:
     - stage: deploy
       python: '3.6'
-      script: ./deploy
+      script: skip
       before_deploy:
         - openssl aes-256-cbc -K $encrypted_034d68278770_key -iv
           $encrypted_034d68278770_iv -in deploy_nesdict.enc -out deploy_nesdict -d
