@@ -3,7 +3,8 @@ from setuptools import setup, find_packages
 
 setup(
     name='nesdict',
-    version='0.1',
+    version_format='{tag}.dev{commitcount}+{gitsha}',
+    setup_requires=['setuptools-git-version'],
     description='Support for xpath-like lookups in nested Python dicts.',
     long_description=open('README.md').read(),
     url='https://github.com/Kargathia/nesdict',
