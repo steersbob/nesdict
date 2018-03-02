@@ -1,24 +1,30 @@
 language: python
 python:
-- '3.4'
-- '3.5'
-- '3.6'
-before_install:
-- openssl aes-256-cbc -K $encrypted_034d68278770_key -iv $encrypted_034d68278770_iv
-  -in deploy_nesdict.enc -out deploy_nesdict -d
+  - '3.4'
+  - '3.5'
+  - '3.6'
 install:
-- pip install tox
+  - pip install tox
 script:
-- tox
-before_deploy:
-- git_bump_version
-- git push --tags
-deploy:
-  provider: pypi
-  user: steersbob
-  password: "$DEPLOY_PASSWORD"
-  on:
-    branch: master
-env:
-  global:
-    secure: Og8SxT7ORbx+vVUCQUEC4HcTrMQDcVt77jAejAafsECPRM2/VcAL9JMAHThjPKq/IN+jL2Mic7lHBn+hXfdF7at+dcQWqvrC9VMyCnuuZqfZ0JFjJjOBh/qdSO/smNGLDUirjyFb8zpytkt7Q8FwN2IrCxrejl7GIm3r6VD/BINboSm13Mp256+WgiM15Hs7DPqmHYBRSeprtgzWlf5UO+SHEqvJH4fEot2V+Yrz6LR2NxDFlkSM5qsUyPzXdk44cg3s0+O+oogvC79QFg/wd+FToMIm/1Hq6d9W2iTMru1BGZwuGnPxBx2HpjpCCukD7cQ05blhyV2MPfyrQatxUWDsUQ0TkVNvqNTorvuWd41z90XL+qWpUlG8ld6+zJmJQOHmfWxdkHWZJKh2PWRbdjnUPSJV02eG+UveF/E4wxhbrmnoj/Qy+anL0aTHGaskzEPc1EqiTMDiSxtpILE9a8KUHQTMM8ck3AIXzxi/pkwk9rsjM3FZaYZCoKF3Jk3c5Ux/V0Sn5QJC0i8RPWMtAGf9vgDBxmCHzihvj5Z/dU7xotM2QTqg9LeW8G+sPghdSZh2mPUQkycvvwHBooDPdTel3zCmJ2CeTrvsjsYFzgDgcPzV97pbx2dLME2AL8Cqv5yUzY+VApCV7yBdd5YJG3D6Kno9T3JB0GtYLQF7+MY=
+  - tox
+jobs:
+  include:
+    - stage: deploy
+      python: '3.6'
+      script: ./deploy
+      before_deploy:
+        - openssl aes-256-cbc -K $encrypted_034d68278770_key -iv
+          $encrypted_034d68278770_iv -in deploy_nesdict.enc -out deploy_nesdict -d
+        - pip install git-bump-version
+        - git_bump_version
+        - git push --tags
+      deploy:
+        provider: pypi
+        user: steersbob
+        password: $DEPLOY_PASSWORD
+        on:
+          branch: master
+      env:
+        global:
+          secure: Og8SxT7ORbx+vVUCQUEC4HcTrMQDcVt77jAejAafsECPRM2/VcAL9JMAHThjPKq/IN+jL2Mic7lHBn+hXfdF7at+dcQWqvrC9VMyCnuuZqfZ0JFjJjOBh/qdSO/smNGLDUirjyFb8zpytkt7Q8FwN2IrCxrejl7GIm3r6VD/BINboSm13Mp256+WgiM15Hs7DPqmHYBRSeprtgzWlf5UO+SHEqvJH4fEot2V+Yrz6LR2NxDFlkSM5qsUyPzXdk44cg3s0+O+oogvC79QFg/wd+FToMIm/1Hq6d9W2iTMru1BGZwuGnPxBx2HpjpCCukD7cQ05blhyV2MPfyrQatxUWDsUQ0TkVNvqNTorvuWd41z90XL+qWpUlG8ld6+zJmJQOHmfWxdkHWZJKh2PWRbdjnUPSJV02eG+UveF/E4wxhbrmnoj/Qy+anL0aTHGaskzEPc1EqiTMDiSxtpILE9a8KUHQTMM8ck3AIXzxi/pkwk9rsjM3FZaYZCoKF3Jk3c5Ux/V0Sn5QJC0i8RPWMtAGf9vgDBxmCHzihvj5Z/dU7xotM2QTqg9LeW8G+sPghdSZh2mPUQkycvvwHBooDPdTel3zCmJ2CeTrvsjsYFzgDgcPzV97pbx2dLME2AL8Cqv5yUzY+VApCV7yBdd5YJG3D6Kno9T3JB0GtYLQF7+MY=
+
