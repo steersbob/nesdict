@@ -1,6 +1,0 @@
-dpath
-pytest
-pytest-cov
-pytest-pycodestyle
-pytest-flake8
-pytest-sugar
