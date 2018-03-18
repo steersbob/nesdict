@@ -18,4 +18,5 @@ jobs:
         user: $PYPI_USER
         password: $PYPI_PASSWORD
         on:
+          all_branches: true
           condition: $TRAVIS_BRANCH =~ ^(develop|master)$
