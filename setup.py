@@ -1,9 +1,13 @@
 from setuptools import setup, find_packages
 
 
+def empty_local(version):
+    return ''
+
+
 setup(
     name='nesdict',
-    use_scm_version=True,
+    use_scm_version={'local_scheme': empty_local},
     description='Support for xpath-like lookups in nested Python dicts.',
     long_description=open('README.md').read(),
     url='https://github.com/steersbob/nesdict',
