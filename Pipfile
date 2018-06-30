@@ -8,16 +8,14 @@ name = "pypi"
 [packages]
 
 dpath = "*"
+
+[dev-packages]
+
 pytest = "*"
 pytest-cov = "*"
 pytest-pycodestyle = "*"
 pytest-flake8 = "*"
 pytest-sugar = "*"
-
-
-[dev-packages]
-
-tox = "*"
 
 [requires]
 
