@@ -18,3 +18,5 @@ jobs:
         skip_existing: true
         user: $PYPI_USER
         password: $PYPI_PASSWORD
+        on:
+          all_branches: true
