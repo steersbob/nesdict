@@ -1,13 +1,8 @@
-from setuptools import setup, find_packages
-
-
-def empty_local(version):
-    return ''
-
+from setuptools import find_packages, setup
 
 setup(
     name='nesdict',
-    use_scm_version={'local_scheme': empty_local},
+    use_scm_version={'local_scheme': lambda v: ''},
     description='Support for xpath-like lookups in nested Python dicts.',
     long_description=open('README.md').read(),
     url='https://github.com/steersbob/nesdict',

@@ -15,14 +15,6 @@ jobs:
       deploy:
 
       - provider: pypi
+        skip_existing: true
         user: $PYPI_USER
         password: $PYPI_PASSWORD
-        on:
-          branch: develop
-          tags: false
-
-      - provider: pypi
-        user: $PYPI_USER
-        password: $PYPI_PASSWORD
-        on:
-          tags: true
